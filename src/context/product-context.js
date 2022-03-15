@@ -1,9 +1,9 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
 
-const Product = createContext();
+const ProductContext = createContext();
 
-const useProduct = () => useContext(Product);
+const useProduct = () => useContext(ProductContext);
 
 const initialState = {
     loading: true, 
@@ -14,9 +14,9 @@ const initialState = {
 const getProducts = (state, action) => {
     switch (action.type) {
         case 'SUCCESS':
-            return {...state, products: action.payload, loading: false, error: ''};
+            return {...state, products: action.payload, loading: false};
         case 'ERROR':
-            return {...state, products: [], loading: false, error: "Something went wrong"};
+            return {...state, loading: false, error: "Something went wrong"};
         default:
            return state;
     }
@@ -35,6 +35,6 @@ const ProductProvider = ({children}) => {
 
     const [state, dispatch] = useReducer(getProducts, initialState)
 
-    return <Product.Provider value={{state, dispatch}}>{children}</Product.Provider>
+    return <ProductContext.Provider value={{state, dispatch}}>{children}</ProductContext.Provider>
 }
 export {useProduct, ProductProvider}

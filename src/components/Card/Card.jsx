@@ -1,5 +1,5 @@
-const Card = (product) => {
-  const { title, categoryName, brand, imageUrl, price } = product.product;
+const Card = (props) => {
+  const { title, categoryName, brand, imageUrl, price } = props.product;
   return (
     <div className="card m-2 up-curve-border">
         <img className=" up-curve-border" src={imageUrl}></img>
