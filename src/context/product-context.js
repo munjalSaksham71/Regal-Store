@@ -25,13 +25,15 @@ const getProducts = (state, action) => {
 const ProductProvider = ({ children }) => {
   const [state, dispatch] = useReducer(getProducts, initialState);
 
-  useEffect(async () => {
-    try {
-      const response = await axios.get("/api/products");
-      dispatch({ type: "SUCCESS", payload: response.data });
-    } catch (error) {
-      dispatch({ type: "ERROR" });
-    }
+  useEffect(() => {
+      (async () => {
+        try {
+            const response = await axios.get("/api/products");
+            dispatch({ type: "SUCCESS", payload: response.data });
+          } catch (error) {
+            dispatch({ type: "ERROR" });
+          }
+      })()
   }, []);
 
   return (
