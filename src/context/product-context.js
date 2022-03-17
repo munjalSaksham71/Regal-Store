@@ -29,7 +29,7 @@ const ProductProvider = ({ children }) => {
       (async () => {
         try {
             const response = await axios.get("/api/products");
-            dispatch({ type: "SUCCESS", payload: response.data });
+            dispatch({ type: "SUCCESS", payload: response.data.products });
           } catch (error) {
             dispatch({ type: "ERROR" });
           }
