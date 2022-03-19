@@ -1,4 +1,3 @@
-import { Action } from "history";
 import { useFilters } from "../../context/filter-context";
 import "./Filters.css";
 
@@ -8,15 +7,6 @@ const Filters = () => {
     productListDispatch,
   } = useFilters();
 
-  const changeHandler = (e) => {
-    if(e.target.checked){
-      productListDispatch({ type: "FILTER_BY_CATEGORY", payload: e.target.value })
-    } else {
-    console.log("Unchecked")
-  }
-}
-
-  console.log({ sortBy, byStock, byFastDelivery, byRating, byCategory });
   return (
     <div className="container ml-3 mt-5">
       <div className="filter_heading">
@@ -34,7 +24,7 @@ const Filters = () => {
             type="radio"
             name="radio"
             className="mr-1"
-            checked={sortBy === "LOW_TO_HIGH" ? true : false}
+            checked={sortBy === "LOW_TO_HIGH"}
             onChange={() =>
               productListDispatch({ type: "SORT", payload: "LOW_TO_HIGH" })
             }
@@ -46,7 +36,7 @@ const Filters = () => {
             type="radio"
             name="radio"
             className="mr-1"
-            checked={sortBy === "HIGH_TO_LOW" ? true : false}
+            checked={sortBy === "HIGH_TO_LOW"}
             onChange={() =>
               productListDispatch({ type: "SORT", payload: "HIGH_TO_LOW" })
             }
@@ -86,7 +76,7 @@ const Filters = () => {
             type="radio"
             name="rating"
             className="mr-1"
-            checked={byRating === 4 ? true : false}
+            checked={byRating === 4}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_RATING", payload: 4 })
             }
@@ -98,7 +88,7 @@ const Filters = () => {
             type="radio"
             name="rating"
             className="mr-1"
-            checked={byRating === 3 ? true : false}
+            checked={byRating === 3}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_RATING", payload: 3 })
             }
@@ -110,7 +100,7 @@ const Filters = () => {
             type="radio"
             name="rating"
             className="mr-1"
-            checked={byRating === 2 ? true : false}
+            checked={byRating === 2}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_RATING", payload: 2 })
             }
@@ -122,7 +112,7 @@ const Filters = () => {
             type="radio"
             name="rating"
             className="mr-1"
-            checked={byRating === 1 ? true : false}
+            checked={byRating === 1}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_RATING", payload: 1 })
             }
@@ -133,7 +123,7 @@ const Filters = () => {
         <label className="mt-1">
           <input
             type="checkbox"
-            checked={byCategory.includes("Casuals") ? true : false}
+            checked={byCategory.includes("Casuals")}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Casuals' })
             }
@@ -143,7 +133,7 @@ const Filters = () => {
         <label className="mt-1">
           <input
             type="checkbox"
-            checked={byCategory.includes("Sports") ? true : false}
+            checked={byCategory.includes("Sports")}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Sports' })
             }
@@ -153,7 +143,7 @@ const Filters = () => {
         <label className="mt-1">
           <input
             type="checkbox"
-            checked={byCategory.includes("Loafers") ? true : false}
+            checked={byCategory.includes("Loafers")}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Loafers' })
             }
@@ -163,7 +153,7 @@ const Filters = () => {
         <label className="mt-1">
           <input
             type="checkbox"
-            checked={byCategory.includes("Chelsea") ? true : false}
+            checked={byCategory.includes("Chelsea")}
             onChange={() =>
               productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Chelsea' })
             }

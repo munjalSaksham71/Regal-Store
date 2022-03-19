@@ -35,7 +35,7 @@ const FilterProvider  = ({children}) => {
                     byCategory: '' 
                 } 
             default:
-                break;
+                return {...products};
         }
     }
 
