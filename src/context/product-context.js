@@ -28,8 +28,9 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
       (async () => {
         try {
-            const response = await axios.get("/api/products");
-            dispatch({ type: "SUCCESS", payload: response.data });
+            const { data } = await axios.get("/api/products");
+            console.log("Data:", data);
+            dispatch({ type: "SUCCESS", payload: data.products });
           } catch (error) {
             dispatch({ type: "ERROR" });
           }
