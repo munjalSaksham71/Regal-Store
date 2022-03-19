@@ -1,0 +1,18 @@
+.category {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1.25rem;
+    margin-left: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.image{
+    height: 12.5rem;
+}
+
+.primary-text {
+    text-decoration: none;
+    color: var(--primary);
+}
+
