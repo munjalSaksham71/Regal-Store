@@ -29,7 +29,6 @@ const ProductProvider = ({ children }) => {
       (async () => {
         try {
             const { data } = await axios.get("/api/products");
-            console.log("Data:", data);
             dispatch({ type: "SUCCESS", payload: data.products });
           } catch (error) {
             dispatch({ type: "ERROR" });
