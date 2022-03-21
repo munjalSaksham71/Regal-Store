@@ -10,7 +10,7 @@ const Navbar = () => {
       <header className="header">
         <Link to="/" className="heading link">REGAL SHOES</Link>
         <div className="topbar_link">
-          <Link to="/" className="header_link link ">
+          <Link to="/wishlist" className="header_link link ">
           <AiOutlineHeart /> Wishlist
           </Link>
           <Link to="/cart" className="header_link link ">
@@ -20,7 +20,7 @@ const Navbar = () => {
             <FaSignInAlt className="mr-1" />Signin
           </Link>
         </div>
-      </header>{" "}
+      </header>
       <hr />
     </>
   );
