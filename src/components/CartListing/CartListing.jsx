@@ -6,12 +6,9 @@ const CartListing = () => {
   
   const { cartState: {cart}, cartDispatch } = useCart();
 
-  const [total, setTotal] = useState();
-  useEffect(() => {
-    setTotal(cart.reduce((acc, curr) => {
+  const total = cart.reduce((acc, curr) => {
       return acc + Number(curr.price) * curr.qty
-    }, 0))
-  })
+    }, 0);
 
   return (
     <div>

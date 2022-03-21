@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useCart } from "../../context/cart-context";
 import './Card.css'
 
