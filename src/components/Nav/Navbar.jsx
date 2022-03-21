@@ -8,12 +8,12 @@ const Navbar = () => {
   return (
     <>
       <header className="header">
-        <h1 className="heading">REGAL SHOES</h1>
+        <Link to="/" className="heading link">REGAL SHOES</Link>
         <div className="topbar_link">
           <Link to="/" className="header_link link ">
           <AiOutlineHeart /> Wishlist
           </Link>
-          <Link to="/" className="header_link link ">
+          <Link to="/cart" className="header_link link ">
           <BsCartFill /> Cart
           </Link>
           <Link to="/" className="header_link link ">
