@@ -1,0 +1,35 @@
+.wishlist_screen {
+    margin: auto;
+}
+
+.wishlist_container {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_delete:hover {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 700px) {
+    .container {
+        flex-flow: column wrap;
+    }
+
+    .small_product_img {
+        height: 200px;
+        width: 200px;
+    }
+
+    .ml-5 {
+        margin-left: 0;
+    }
+
+    .m-2 {
+        margin: 0
+    }
+}
