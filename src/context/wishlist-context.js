@@ -8,7 +8,7 @@ const WishlistContextProvider = ({children}) => {
             case 'ADD_TO_WISHLIST':
                 return {...state, wishlist: [...state.wishlist, action.payload]};
             case 'REMOVE_FROM_WISHLIST':
-                return {...state, wishlist: state.wishlist.filter((w) => w._id !== action.payload._id) };
+                return {...state, wishlist: state.wishlist.filter((product) => product._id !== action.payload._id) };
             default:
                 return state;
         }
