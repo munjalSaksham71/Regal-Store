@@ -16,7 +16,7 @@ const Navbar = () => {
           <Link to="/cart" className="header_link link ">
           <BsCartFill /> Cart
           </Link>
-          <Link to="/" className="header_link link ">
+          <Link to="/login" className="header_link link ">
             <FaSignInAlt className="mr-1" />Signin
           </Link>
         </div>
