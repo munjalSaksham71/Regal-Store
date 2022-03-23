@@ -49,7 +49,6 @@ const ProductsScreen = () => {
 
   return (
     <>
-      <Navbar />
       {loading && <div>Loading...</div>}
       <Filters />
       {!loading && !error && <ProductListing products={filteredProductList} />}

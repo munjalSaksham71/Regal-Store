@@ -5,7 +5,6 @@ import './LoginScreen.css'
 const LoginScreen = () => {
   return (
     <div>
-      <Navbar />
       <form className="wrap form-height">
         <div className="heading1 mt-3">SIGN IN</div>
         <label className="mt-5" htmlFor="email">

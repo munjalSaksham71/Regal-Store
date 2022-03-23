@@ -2,7 +2,7 @@ import "./Navbar.css"
 import { AiOutlineHeart } from 'react-icons/ai'
 import { BsCartFill } from 'react-icons/bs'
 import { FaSignInAlt } from 'react-icons/fa'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -10,15 +10,15 @@ const Navbar = () => {
       <header className="header">
         <Link to="/" className="heading link">REGAL SHOES</Link>
         <div className="topbar_link">
-          <Link to="/wishlist" className="header_link link ">
+          <NavLink to="/wishlist" className="header_link link ">
           <AiOutlineHeart /> Wishlist
-          </Link>
-          <Link to="/cart" className="header_link link ">
+          </NavLink>
+          <NavLink to="/cart" className="header_link link ">
           <BsCartFill /> Cart
-          </Link>
-          <Link to="/login" className="header_link link ">
+          </NavLink>
+          <NavLink to="/login" className="header_link link ">
             <FaSignInAlt className="mr-1" />Signin
-          </Link>
+          </NavLink>
         </div>
       </header>
       <hr />
