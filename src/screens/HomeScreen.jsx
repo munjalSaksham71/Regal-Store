@@ -22,7 +22,6 @@ const HomeScreen = () => {
 
     return (
         <div>
-            <Navbar />
             {loading && <div>Loading....</div>}
             <p className="heading1 center">Product Categories</p>
             {!error && !loading && <Categories categories={categories} />}
