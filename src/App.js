@@ -3,6 +3,7 @@ import "./App.css";
 import MockMan from 'mockman-js'
 import { HomeScreen, ProductsScreen, CartScreen, WishlistScreen, LoginScreen, SignupScreen  } from './screens/index'
 import Navbar from "./components/Nav/Navbar";
+import NotFound from "./screens/NotFound";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/signup" element={<SignupScreen />} />
         <Route path="/mock" element={<MockMan />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
