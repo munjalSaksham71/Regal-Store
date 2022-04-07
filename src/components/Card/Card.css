@@ -5,3 +5,8 @@
 .danger-colour {
     color: var(--danger);
 }
+
+.grey-text {
+    color: var(--dark-grey);
+    text-decoration: underline;
+}

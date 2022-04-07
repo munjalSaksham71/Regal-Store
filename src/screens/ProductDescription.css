@@ -1,0 +1,42 @@
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.product_image {
+    margin-left: 8rem;
+    margin-top: 4rem;
+}
+
+.product_main {
+    display: flex;
+    flex-direction: column;
+    width: 17rem;
+    margin-left: 5rem;
+}
+
+.border {
+    border: 1px solid var(--dark-grey);
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    width: 17rem;
+    height: 10rem;
+    margin-left: 5rem;
+    margin-top: 10rem;
+}
+
+.product_title {
+    margin-top: 5rem;
+}
+
+.success {
+    color: var(--primary);
+}
+
+.grey-text {
+    color: var(--dark-grey);
+    text-decoration: underline;
+}

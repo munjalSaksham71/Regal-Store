@@ -4,6 +4,7 @@ import MockMan from 'mockman-js'
 import { HomeScreen, ProductsScreen, CartScreen, WishlistScreen, LoginScreen, SignupScreen  } from './screens/index'
 import Navbar from "./components/Nav/Navbar";
 import NotFound from "./screens/NotFound";
+import ProductDescription from "./screens/ProductDescription";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeScreen /> } />
         <Route path="/products" element={<ProductsScreen />} />
+        <Route path="/products/:productId" element={<ProductDescription />} />
         <Route path="/cart" element={<CartScreen />} />
         <Route path="/wishlist" element={<WishlistScreen />} />
         <Route path="/login" element={<LoginScreen />} />

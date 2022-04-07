@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import './Card.css'
@@ -26,9 +27,10 @@ const Card = ({product}) => {
               ) : (
                 <button className="btn btn-outline-primary primary-color" onClick={() => wishlistDispatch({type: 'ADD_TO_WISHLIST', payload: product})}>Add to wishlist</button>
               ) }
-            <button className="btn btn-primary" onClick={() => cartDispatch({type: 'ADD_TO_CART', payload: product})}>Add to cart</button>
+            <button className="btn btn-primary " onClick={() => cartDispatch({type: 'ADD_TO_CART', payload: product})}>Add to cart</button>
             </div>
           ) }
+          <Link to={`/products/${_id}`} className="ml-1 mt-2 link grey-text">Click here to know more</Link>
       </div>
     </div>
   );
