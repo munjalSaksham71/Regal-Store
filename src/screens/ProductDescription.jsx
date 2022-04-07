@@ -59,10 +59,6 @@ const ProductDescription = () => {
           )}
         </div>
         <div className="cart border">
-          <p className="mt-1 ml-1">
-            In Stock: {product?.inStock ? <AiOutlineCheck /> : <FaTimes />}
-          </p>
-          <hr className="mt-2" />
           <p className="mt-1 ml-1">Price: ₹ {product?.price}</p>
           <hr className="mt-2" />
           {cart.some((p) => p._id === product?._id) ? (
