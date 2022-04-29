@@ -5,6 +5,7 @@ import { HomeScreen, ProductsScreen, CartScreen, WishlistScreen, LoginScreen, Si
 import Navbar from "./components/Nav/Navbar";
 import NotFound from "./screens/NotFound";
 import ProductDescription from "./screens/ProductDescription";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
         <Route path="/" element={<HomeScreen /> } />
         <Route path="/products" element={<ProductsScreen />} />
         <Route path="/products/:productId" element={<ProductDescription />} />
-        <Route path="/cart" element={<CartScreen />} />
-        <Route path="/wishlist" element={<WishlistScreen />} />
+        <Route path="/cart" element={<PrivateRoute><CartScreen /></PrivateRoute>} />
+        <Route path="/wishlist" element={<PrivateRoute><WishlistScreen /></PrivateRoute>} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/signup" element={<SignupScreen />} />
         <Route path="/mock" element={<MockMan />} />
