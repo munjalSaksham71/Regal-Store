@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../actions/cartActions";
+import { addToWishlist, removeFromwishlist } from "../../actions/wishlistActions";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import './Card.css'
@@ -19,6 +20,17 @@ const Card = ({product}) => {
     cartDispatch({type: 'ADD_TO_CART', payload: data.cart})
   }
 
+  const removeFromWishlistHandler = async (id) => {
+    const { data }  = await removeFromwishlist(id);
+    wishlistDispatch({type: 'REMOVE_FROM_WISHLIST', payload: data.wishlist})
+  }
+
+  const addToWishlistHandler = async (product) => {
+    const { data }  = await addToWishlist(product);
+    wishlistDispatch({type: 'ADD_TO_WISHLIST', payload: data.wishlist})
+  }
+
+
   return (
     <div className="card m-2 up-curve-border">
         <img className=" up-curve-border" src={imageUrl}></img>
@@ -33,10 +45,10 @@ const Card = ({product}) => {
             <button className="btn btn-error" onClick={() => removeFromCartHandler(product._id)} >Remove From Cart</button>
           ) : (
             <div className="card_buttons">
-              {wishlist.includes(product) ? (
-                <button className="btn btn-outline-error danger-colour" onClick={() => wishlistDispatch({type: 'REMOVE_FROM_WISHLIST', payload: product})}>Remove From Wishlist</button>
+              {wishlist.some(item => item._id === product._id) ? (
+                <button className="btn btn-outline-error danger-colour" onClick={() => removeFromWishlistHandler(product._id)}>Remove From Wishlist</button>
               ) : (
-                <button className="btn btn-outline-primary primary-color" onClick={() => wishlistDispatch({type: 'ADD_TO_WISHLIST', payload: product})}>Add to wishlist</button>
+                <button className="btn btn-outline-primary primary-color" onClick={() => addToWishlistHandler(product)}>Add to wishlist</button>
               ) }
             <button className="btn btn-primary " onClick={() => addToCartHandler(product)}>Add to cart</button>
             </div>
