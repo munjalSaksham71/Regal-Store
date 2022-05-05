@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const token = localStorage.getItem("user_info").slice(1, -1);
+const token = localStorage.getItem("user_info");
 
 export const getCartProducts = async () => {
+  const userInfo = token.slice(1,-1)
   try {
     const { data } = await axios.get("/api/user/cart", {
       headers: {
-        authorization: token,
+        authorization: userInfo,
       },
     });
     return data;
@@ -16,13 +17,14 @@ export const getCartProducts = async () => {
 };
 
 export const addToCart = async (product) => {
+  const userInfo = token.slice(1,-1)
     try {
       const response  = await axios.post(
         "/api/user/cart",
         { product },
         {
           headers: {
-            authorization: token,
+            authorization: userInfo,
           },
         }
       );
@@ -33,10 +35,11 @@ export const addToCart = async (product) => {
   };
 
 export const removeFromCart = async (id) => {
+  const userInfo = token.slice(1,-1)
   try {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: {
-        authorization: token,
+        authorization: userInfo,
       },
     });
     return response;

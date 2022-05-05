@@ -99,4 +99,4 @@ const ProductDescription = () => {
   );
 };
 
-export default ProductDescription;
+export { ProductDescription };
