@@ -6,7 +6,7 @@ import './Wishlist.css'
 
 const WishListing = () => {
     const { wishlistState: {wishlist}, wishlistDispatch } = useWishlist();
-    const { cartDispatch } = useCart();
+    const { cartState: {cart}, cartDispatch } = useCart();
     
     const moveToCartHandler = (product) => {
         cartDispatch({type: 'ADD_TO_CART', payload: product});

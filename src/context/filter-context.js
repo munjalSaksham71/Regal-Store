@@ -11,7 +11,8 @@ const FilterProvider  = ({children}) => {
         byStock: false, 
         byFastDelivery: false, 
         byRating: 0,
-        byCategory: []
+        byCategory: [], 
+        byRange: 1500
     }
 
     const filterReducer = ( products, action ) => {
@@ -25,7 +26,11 @@ const FilterProvider  = ({children}) => {
             case 'FILTER_BY_RATING':
                 return {...products, byRating: action.payload} 
             case 'FILTER_BY_CATEGORY':
-                return {...products, byCategory: [...products.byCategory, action.payload]}   
+                return {...products, byCategory: [...products.byCategory, action.payload]}
+            case 'REMOVE_CATEGORY': 
+                return {...products, byCategory: [...products.byCategory.filter((item) => item !== action.payload)]} 
+            case 'SORT_BY_RANGE': 
+                return {...products, byRange: action.payload}  
             case 'CLEAR_FILTERS':
                 return {
                     sortBy: '',
