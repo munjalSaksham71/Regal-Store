@@ -1,7 +1,7 @@
 import './CartListing.css'
 import { AiFillDelete } from "react-icons/ai";
-import { useEffect, useState } from 'react';
 import { useCart } from '../../context/cart-context';
+import { removeFromCart } from '../../actions/cartActions'
 const CartListing = () => {
   
   const { cartState: {cart}, cartDispatch } = useCart();
@@ -9,6 +9,11 @@ const CartListing = () => {
   const total = cart.reduce((acc, curr) => {
       return acc + Number(curr.price) * curr.qty
     }, 0);
+
+    const removeFromCartHandler = async (id) => {
+      const { data }  = await removeFromCart(id);
+      cartDispatch({type: 'REMOVE_FROM_CART', payload: data.cart})
+    }
 
   return (
     <div>
@@ -21,7 +26,7 @@ const CartListing = () => {
         <div className="product_qty mt-2 ml-5">
         </div>
         <div className="product_delete mt-2 ml-5">
-          <button onClick={() => cartDispatch({type: 'REMOVE_FROM_CART', payload: prod}) } className="button"><AiFillDelete /></button>
+          <button onClick={() => removeFromCartHandler(prod._id)} className="button"><AiFillDelete /></button>
         </div>
       </div>
       ))}

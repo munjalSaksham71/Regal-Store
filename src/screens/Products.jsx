@@ -57,4 +57,4 @@ const ProductsScreen = () => {
   );
 };
 
-export default ProductsScreen;
+export  {ProductsScreen};

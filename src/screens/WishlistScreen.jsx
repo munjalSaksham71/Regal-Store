@@ -9,4 +9,4 @@ const WishlistScreen = () => {
     )
 }
 
-export default WishlistScreen
+export  {WishlistScreen}

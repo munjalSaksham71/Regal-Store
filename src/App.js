@@ -1,10 +1,8 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import MockMan from 'mockman-js'
-import { HomeScreen, ProductsScreen, CartScreen, WishlistScreen, LoginScreen, SignupScreen  } from './screens/index'
+import { HomeScreen, ProductsScreen, CartScreen, WishlistScreen, LoginScreen, SignupScreen,ProductDescription, NotFound  } from './screens/index'
 import Navbar from "./components/Nav/Navbar";
-import NotFound from "./screens/NotFound";
-import ProductDescription from "./screens/ProductDescription";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 
 function App() {
