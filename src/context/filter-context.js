@@ -37,7 +37,8 @@ const FilterProvider  = ({children}) => {
                     byStock: false, 
                     byFastDelivery: false, 
                     byRating: 0,
-                    byCategory: '' 
+                    byCategory: '',
+                    byRange: 1500
                 } 
             default:
                 return {...products};

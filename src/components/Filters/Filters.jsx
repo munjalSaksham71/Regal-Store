@@ -5,7 +5,7 @@ import "./Filters.css";
 const Filters = () => {
   const [rangeval, setRangeval] = useState(null);
   const {
-    productListState: { sortBy, byStock, byFastDelivery, byRating, byCategory },
+    productListState: { sortBy, byStock, byFastDelivery, byRating, byCategory, byRange },
     productListDispatch,
   } = useFilters();
 
@@ -64,7 +64,7 @@ const Filters = () => {
           <input
             type="range"
             className="custom-range mt-2 "
-            value={rangeval}
+            value={byRange}
             min="1500"
             max="5200"
             defaultValue="1500"
