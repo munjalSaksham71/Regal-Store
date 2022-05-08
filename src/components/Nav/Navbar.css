@@ -16,3 +16,17 @@ header {
 .link:hover {
     text-decoration: underline;
 }
+
+.badge_circle {
+    background: var(--white);
+    color: var(--bg-black);
+    padding: 2px 4px;
+    border-radius: 50%;
+    font-size: 16px;
+    position: absolute;
+    top: 14px;
+}
+
+.no_badge {
+    display: none;
+}

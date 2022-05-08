@@ -1,11 +1,27 @@
+import { useEffect, useState } from "react";
 import { useFilters } from "../../context/filter-context";
 import "./Filters.css";
 
 const Filters = () => {
+  const [rangeval, setRangeval] = useState(null);
   const {
-    productListState: { sortBy, byStock, byFastDelivery, byRating, byCategory },
+    productListState: { sortBy, byStock, byFastDelivery, byRating, byCategory, byRange },
     productListDispatch,
   } = useFilters();
+
+  useEffect(() => {
+    productListDispatch({type: 'SORT_BY_RANGE', payload: rangeval})
+  }, [rangeval])
+
+
+  const filterHandler = (e, category) => {
+    if (e.target.checked) {
+      productListDispatch({ type: "FILTER_BY_CATEGORY", payload: category });
+    } else {
+      productListDispatch({ type: "REMOVE_CATEGORY", payload: category });
+    }
+  };
+
 
   return (
     <div className="container ml-3 mt-5">
@@ -44,6 +60,23 @@ const Filters = () => {
           Price: High to Low
         </label>
         <hr className="mt-2" />
+        <div>
+          <input
+            type="range"
+            className="custom-range mt-2 "
+            value={byRange}
+            min="1500"
+            max="5200"
+            defaultValue="1500"
+            onChange={(e) => setRangeval(e.target.value)}
+          />
+          <div className="filter_heading">
+          <div>₹1500</div>
+          <div className="filter_clear">₹5200</div>
+          </div>
+        </div>
+        <hr className="mt-2" />
+
         <label className="mt-1">
           <input
             type="checkbox"
@@ -124,9 +157,8 @@ const Filters = () => {
           <input
             type="checkbox"
             checked={byCategory.includes("Casuals")}
-            onChange={() =>
-              productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Casuals' })
-            }
+            className="mr-1"
+            onChange={(e) => filterHandler(e, "Casuals")}
           />
           Casual Shoes
         </label>
@@ -134,9 +166,8 @@ const Filters = () => {
           <input
             type="checkbox"
             checked={byCategory.includes("Sports")}
-            onChange={() =>
-              productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Sports' })
-            }
+            className="mr-1"
+            onChange={(e) => filterHandler(e, "Sports")}
           />
           Sports Shoes
         </label>
@@ -144,9 +175,8 @@ const Filters = () => {
           <input
             type="checkbox"
             checked={byCategory.includes("Loafers")}
-            onChange={() =>
-              productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Loafers' })
-            }
+            className="mr-1"
+            onChange={(e) => filterHandler(e, "Loafers")}
           />
           Loafers
         </label>
@@ -154,9 +184,8 @@ const Filters = () => {
           <input
             type="checkbox"
             checked={byCategory.includes("Chelsea")}
-            onChange={() =>
-              productListDispatch({ type: "FILTER_BY_CATEGORY", payload: 'Chelsea' })
-            }
+            className="mr-1"
+            onChange={(e) => filterHandler(e, "Chelsea")}
           />
           Chelsea
         </label>
