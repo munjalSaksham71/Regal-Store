@@ -14,8 +14,6 @@ const WishListing = () => {
     cartDispatch,
   } = useCart();
 
-  console.log(cart);
-
   const moveToCartHandler = (product) => {
     cartDispatch({ type: "ADD_TO_CART", payload: product });
     wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: product });
