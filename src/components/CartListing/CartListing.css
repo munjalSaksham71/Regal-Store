@@ -44,12 +44,22 @@ select {
     height: 10rem;
     border: 1px solid black;
     top: 13rem;
-    left: 34rem;
+    left: 42rem;
 }
 
 .btn_checkout {
     width: 19rem;
     height: 10rem;
+}
+
+.button-height {
+    height: 2rem;
+}
+
+.flex-row {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -69,4 +79,9 @@ select {
 .button {
     all: unset;
     cursor: pointer;
+}
+
+.qty-btn {
+    width: 1.5rem;
+    height: 1.5rem;
 }

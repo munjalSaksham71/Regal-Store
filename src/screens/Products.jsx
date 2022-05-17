@@ -9,7 +9,14 @@ const ProductsScreen = () => {
     state: { products, loading, error },
   } = useProduct();
   const {
-    productListState: { sortBy, byStock, byFastDelivery, byRating, byCategory },
+    productListState: {
+      sortBy,
+      byStock,
+      byFastDelivery,
+      byRating,
+      byCategory,
+      byRange,
+    },
   } = useFilters();
 
   const filterProducts = () => {
@@ -32,6 +39,12 @@ const ProductsScreen = () => {
     if (byRating > 0) {
       filteredProducts = filteredProducts.filter(
         (prod) => prod.rating >= byRating
+      );
+    }
+
+    if (byRange) {
+      filteredProducts = filteredProducts.filter(
+        (product) => product.price >= byRange
       );
     }
 

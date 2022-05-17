@@ -6,6 +6,7 @@ import {
 } from "../../actions/wishlistActions";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { AiFillStar } from "react-icons/ai";
 import "./Card.css";
 
 const Card = ({ product }) => {
