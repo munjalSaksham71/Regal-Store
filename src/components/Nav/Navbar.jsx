@@ -24,9 +24,6 @@ const Navbar = () => {
           <NavLink to="/cart" className="header_link link ">
           <BsCartFill /> Cart <span className={!cart.length ? "no_badge" : "badge_circle"}> {cart.length} </span>
           </NavLink>
-          <NavLink to="/login" className="header_link link ">
-            <FaSignInAlt className="mr-1" />Signin
-          </NavLink>
           {user ? (
             <div onClick={logoutUser} className="header_link link ">
               <FaSignInAlt className="mr-1" /> Logout
