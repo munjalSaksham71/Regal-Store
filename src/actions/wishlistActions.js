@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const token = localStorage.getItem("user_info")
 
 export const getWishlistProducts = async () => {
+  const token = localStorage.getItem("user_info")
   const userInfo = token.slice(1,-1)
   try {
     const { data } = await axios.get("/api/user/wishlist", {
@@ -17,6 +17,7 @@ export const getWishlistProducts = async () => {
 };
 
 export const addToWishlist = async (product) => {
+  const token = localStorage.getItem("user_info")
   const userInfo = token.slice(1,-1)
     try {
       const response  = await axios.post(
@@ -35,6 +36,7 @@ export const addToWishlist = async (product) => {
   };
 
 export const removeFromwishlist = async (id) => {
+  const token = localStorage.getItem("user_info")
   const userInfo = token.slice(1,-1)
   try {
     const response = await axios.delete(`/api/user/wishlist/${id}`, {
