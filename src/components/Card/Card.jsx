@@ -18,7 +18,7 @@ const Card = ({ product }) => {
     wishlistState: { wishlist },
     wishlistDispatch,
   } = useWishlist();
-  const { _id, title, categoryName, imageUrl, price } = product;
+  const { _id, title, categoryName, imageUrl, price, rating } = product;
 
   const removeFromCartHandler = async (id) => {
     const { data } = await removeFromCart(id);
@@ -49,14 +49,6 @@ const Card = ({ product }) => {
       </div>
       <div className="card_content pl-3 pr-1 mt-2">Rs.{price}</div>
       <div className="card_footer mt-2 mb-2 pl-3">
-        {cart.some((p) => p._id === _id) ? (
-          <button
-            className="btn btn-error"
-            onClick={() => removeFromCartHandler(product._id)}
-          >
-            Remove From Cart
-          </button>
-        ) : (
           <div className="card_buttons">
             {wishlist.some((item) => item._id === product._id) ? (
               <button
@@ -73,17 +65,28 @@ const Card = ({ product }) => {
                 Add to wishlist
               </button>
             )}
-            <button
+            {cart.some((p) => p._id === _id) ? (
+              <button
+              className="btn btn-error"
+              onClick={() => removeFromCartHandler(product._id)}
+            >
+              Remove From Cart
+            </button>
+            ) : (
+              <button
               className="btn btn-primary "
               onClick={() => addToCartHandler(product)}
             >
               Add to cart
             </button>
-          </div>
-        )}
+            )}
+            </div>
         <Link to={`/products/${_id}`} className="ml-1 mt-2 link grey-text">
           Click here to know more
         </Link>
+      </div>
+      <div class="card_badge btn btn-primary">
+        <AiFillStar /> {rating}/5
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const CartListing = () => {
     wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: product });
   };
 
-  const total = cart.reduce((acc, curr) => {
+  const total = cart?.reduce((acc, curr) => {
     return acc + Number(curr.price) * curr.qty;
   }, 0);
 
@@ -43,6 +43,7 @@ const CartListing = () => {
   return (
     <div>
       <div className="heading2 cart_screen">Shopping Cart</div>
+      {cart.length === 0 && <div className="heading3 center"> No Items in Cart.</div>}
       {cartItems.map((prod) => (
         <div key={prod._id} className="cart_container cart_screen">
           <img className="small_product_img" src={prod.imageUrl}></img>
@@ -81,8 +82,8 @@ const CartListing = () => {
           </div>
         </div>
       ))}
-
-      <div className="wrap cart_total_box">
+      {total && (
+        <div className="wrap cart_total_box">
         <div className="heading2 ml-5 mt-1">Subtotal</div>
         <div className="heading4 subtotal_amt ml-5 mt-2 mb-2">Rs. {total}</div>
         <hr></hr>
@@ -90,6 +91,7 @@ const CartListing = () => {
           Proceed&nbsp;to&nbsp;checkout
         </button>
       </div>
+      )}
     </div>
   );
 };
