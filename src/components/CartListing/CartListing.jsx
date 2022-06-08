@@ -4,6 +4,7 @@ import { removeFromCart } from '../../actions/cartActions'
 import { useEffect, useState } from "react";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
+import { addToWishlist } from "../../actions/wishlistActions";
 
 const CartListing = () => {
   const {
@@ -16,14 +17,18 @@ const CartListing = () => {
     wishlistDispatch,
   } = useWishlist();
 
-  const moveToWishlistHandler = (product) => {
-    cartDispatch({ type: "REMOVE_FROM_CART", payload: product });
-    wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: product });
+  const moveToWishlistHandler = async (product) => {
+    const { data } = await removeFromCart(product._id);
+    cartDispatch({ type: "REMOVE_FROM_CART", payload: data.cart });
+    const response = await addToWishlist(product);
+    wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: response.data.wishlist });
   };
 
-  const total = cart?.reduce((acc, curr) => {
+  const total =  Array.isArray(cart) ? 
+  cart.reduce((acc, curr) => {
     return acc + Number(curr.price) * curr.qty;
-  }, 0);
+  }, 0) 
+  : 0;
 
   let cartItems = cart;
 
@@ -40,11 +45,13 @@ const CartListing = () => {
       cartDispatch({type: 'REMOVE_FROM_CART', payload: data.cart})
     }
 
+    console.log(cart);
+
   return (
     <div>
       <div className="heading2 cart_screen">Shopping Cart</div>
       {cart.length === 0 && <div className="heading3 center"> No Items in Cart.</div>}
-      {cartItems.map((prod) => (
+      {cartItems?.map((prod) => (
         <div key={prod._id} className="cart_container cart_screen">
           <img className="small_product_img" src={prod.imageUrl}></img>
           <div className="product_desc m-2">{prod.title}</div>
@@ -72,9 +79,7 @@ const CartListing = () => {
           )}
           <div className="product_delete mt-2 ml-1">
             <button
-              onClick={() =>
-                cartDispatch({ type: "REMOVE_FROM_CART", payload: prod })
-              }
+              onClick={() =>removeFromCartHandler(prod._id)}
               className="button"
             >
               <AiFillDelete />
@@ -82,7 +87,7 @@ const CartListing = () => {
           </div>
         </div>
       ))}
-      {total && (
+      {total !== 0  && (
         <div className="wrap cart_total_box">
         <div className="heading2 ml-5 mt-1">Subtotal</div>
         <div className="heading4 subtotal_amt ml-5 mt-2 mb-2">Rs. {total}</div>
