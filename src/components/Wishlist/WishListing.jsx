@@ -1,8 +1,10 @@
 import { AiFillDelete } from "react-icons/ai";
-import { useWishlist } from "../../context/wishlist-context";
-import { useCart } from "../../context/cart-context";
-import "../CartListing/CartListing.css";
-import "./Wishlist.css";
+import { useWishlist } from "../../context/wishlist-context"
+import { useCart } from "../../context/cart-context"
+import { addToCart  } from '../../actions/cartActions'
+import { removeFromwishlist } from '../../actions/wishlistActions'
+import '../CartListing/CartListing.css'
+import './Wishlist.css'
 
 const WishListing = () => {
   const {
@@ -14,10 +16,17 @@ const WishListing = () => {
     cartDispatch,
   } = useCart();
 
-  const moveToCartHandler = (product) => {
-    cartDispatch({ type: "ADD_TO_CART", payload: product });
-    wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: product });
-  };
+    const moveToCartHandler = async (product) => {
+        const { data } = await addToCart(product);
+        cartDispatch({type: 'ADD_TO_CART', payload: data.cart});
+        const response = await removeFromwishlist(product._id);
+        wishlistDispatch({type: 'REMOVE_FROM_WISHLIST', payload: response.data.wishlist})
+    }
+
+    const removeFromWishlistHandler = async (id) => {
+        const { data }  = await removeFromwishlist(id);
+        wishlistDispatch({type: 'REMOVE_FROM_WISHLIST', payload: data.wishlist})
+      }
 
   return (
     <div>
@@ -39,17 +48,7 @@ const WishListing = () => {
               Move&nbsp;to&nbsp;Cart
             </button>
           )}
-          <div
-            className="product_delete mt-4 ml-5"
-            onClick={() =>
-              wishlistDispatch({
-                type: "REMOVE_FROM_WISHLIST",
-                payload: product,
-              })
-            }
-          >
-            <AiFillDelete />
-          </div>
+           <div className="product_delete mt-4 ml-5" onClick={() =>  removeFromWishlistHandler(product._id)}><AiFillDelete /></div>
         </div>
       ))}
     </div>

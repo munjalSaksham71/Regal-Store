@@ -5,6 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import { AiOutlineCheck } from "react-icons/ai";
 import "./ProductDescription.css";
 import { useCart } from "../context/cart-context";
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 const ProductDescription = () => {
   const [product, setProduct] = useState();
@@ -25,6 +26,17 @@ const ProductDescription = () => {
       }
     })();
   }, []);
+
+  const removeFromCartHandler = async (id) => {
+    const { data }  = await removeFromCart(id);
+    cartDispatch({type: 'REMOVE_FROM_CART', payload: data.cart})
+  }
+
+  const addToCartHandler = async (product) => {
+    const { data }  = await addToCart(product);
+    cartDispatch({type: 'ADD_TO_CART', payload: data.cart})
+  }
+
   return (
     <div>
       <div className="center heading1"> Product Description</div>
@@ -65,7 +77,7 @@ const ProductDescription = () => {
             <button
               className="btn btn-error mt-1 ml-2 mr-2 mb-1"
               onClick={() =>
-                cartDispatch({ type: "REMOVE_FROM_CART", payload: product })
+                removeFromCartHandler(product._id)
               }
             >
               Remove From Cart
@@ -73,7 +85,7 @@ const ProductDescription = () => {
           ) : (
             <button
               onClick={() =>
-                cartDispatch({ type: "ADD_TO_CART", payload: product })
+                addToCartHandler(product)
               }
               className="btn btn-dark-grey mt-1 ml-2 mr-2 mb-1"
               disabled={!product?.inStock}
@@ -87,4 +99,4 @@ const ProductDescription = () => {
   );
 };
 
-export default ProductDescription;
+export { ProductDescription };
