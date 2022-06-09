@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { addToWishlist } from "../../actions/wishlistActions";
+import toast from 'react-hot-toast'
 
 const CartListing = () => {
   const {
@@ -41,11 +42,13 @@ const CartListing = () => {
   }
 
     const removeFromCartHandler = async (id) => {
-      const { data }  = await removeFromCart(id);
-      cartDispatch({type: 'REMOVE_FROM_CART', payload: data.cart})
+      try {
+        const { data }  = await removeFromCart(id);
+        cartDispatch({type: 'REMOVE_FROM_CART', payload: data.cart}) 
+      } catch (error) {
+        toast.error("Something Went wrong!!")
+      }
     }
-
-    console.log(cart);
 
   return (
     <div>

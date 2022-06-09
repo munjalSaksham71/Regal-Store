@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import './LoginScreen.css'
 import { useAuth } from '../context/auth-context'
+import toast from 'react-hot-toast'
 
 const SignupScreen = () => {
   const [email, setEmail] = useState("");
@@ -17,10 +18,10 @@ const SignupScreen = () => {
           try {
               await signupUser(email, password);
           } catch (error) {
-              console.log(error.message)
+              toast.error("Something went wrong! Please try again later")
           }
       } else {
-          alert("Password and confirm password fields didn't match.")
+          toast.error("Password and confirm password fields didn't match.")
       }
   }
 

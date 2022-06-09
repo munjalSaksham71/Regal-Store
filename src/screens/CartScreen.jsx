@@ -1,12 +1,12 @@
-import CartListing from '../components/CartListing/CartListing';
-import Navbar from '../components/Nav/Navbar';
+import CartListing from "../components/CartListing/CartListing";
+import Navbar from "../components/Nav/Navbar";
 
 const CartScreen = () => {
   return (
     <>
-        <CartListing />
+      <CartListing />
     </>
   );
 };
 
-export  {CartScreen};
+export { CartScreen };
