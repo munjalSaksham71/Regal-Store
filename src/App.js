@@ -4,6 +4,7 @@ import MockMan from 'mockman-js'
 import { HomeScreen, ProductsScreen, CartScreen, WishlistScreen, LoginScreen, SignupScreen,ProductDescription, NotFound  } from './screens/index'
 import Navbar from "./components/Nav/Navbar";
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/mock" element={<MockMan />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Toaster />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import './LoginScreen.css'
+import toast from 'react-hot-toast'
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -13,21 +14,22 @@ const LoginScreen = () => {
   const submitHandler = async (e) => {
       e.preventDefault();
       if(!email || !password ){
-        alert("Please enter both the fields");
+        toast.error("Please enter both the fields");
       }
       try {
           await loginUser(email, password);
       } catch (error) {
-          console.log(error.message)
+          toast.error("User Credential Didnt Match")
       }
   }
 
   const guestLoginHandler = async (e) => {
     e.preventDefault();
     try {
-        await loginUser("adarshbalika@gmail.com", "adarshBalika123");
+        await loginUser("janedoe@gmail.com", "janedoe");
+        toast.success("Login as a Guest User")
     } catch (error) {
-        console.log("Something went wrong.")
+        toast.error("Something went wrong.")
     }
   }
 

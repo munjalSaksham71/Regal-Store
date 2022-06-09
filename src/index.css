@@ -1,5 +1,6 @@
 @import url(https://regalUI.netlify.app/styles.css);
 @import url(../node_modules/mockman-js/dist/style.css);
+
 :root {
   --dark-grey: #343a40;
   --white: #ffffff;
