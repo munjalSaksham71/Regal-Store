@@ -46,15 +46,10 @@ const CartListing = () => {
   };
 
   const handleDecrement = (qty, id) => {
-    console.log("Quantity: ", qty);
-
-    const removeFromCartHandler = async (id) => {
-      try {
-        const { data }  = await removeFromCart(id);
-        cartDispatch({type: 'REMOVE_FROM_CART', payload: data.cart}) 
-      } catch (error) {
-        toast.error("Something Went wrong!!")
-      }
+    if (qty <= 1) {
+      removeFromCartHandler(id);
+    } else {
+      cartDispatch({ type: "DECREMENT_QUANTITY", payload: id });
     }
   };
 
