@@ -45,6 +45,6 @@ export const removeFromCart = async (id) => {
     });
     return response;
   } catch (error) {
-    console.error(error);
+    console.error(error.response);
   }
 };

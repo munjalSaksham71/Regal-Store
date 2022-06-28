@@ -8,6 +8,7 @@ import { useCart } from "../../context/cart-context";
 import { useWishlist } from "../../context/wishlist-context";
 import { AiFillStar } from "react-icons/ai";
 import "./Card.css";
+import toast from 'react-hot-toast';
 
 const Card = ({ product }) => {
   const {
@@ -21,23 +22,39 @@ const Card = ({ product }) => {
   const { _id, title, categoryName, imageUrl, price, rating } = product;
 
   const removeFromCartHandler = async (id) => {
-    const { data } = await removeFromCart(id);
-    cartDispatch({ type: "REMOVE_FROM_CART", payload: data.cart });
+    try {
+      const { data } = await removeFromCart(id);
+      cartDispatch({ type: "REMOVE_FROM_CART", payload: data.cart }); 
+    } catch (error) {
+      toast.error("Something Went Wrong! Please Try Again")
+    }
   };
 
   const addToCartHandler = async (product) => {
-    const { data } = await addToCart(product);
-    cartDispatch({ type: "ADD_TO_CART", payload: data.cart });
+    try {
+      const { data } = await addToCart(product);
+      cartDispatch({ type: "ADD_TO_CART", payload: data.cart }); 
+    } catch (error) {
+      toast.error("Please Login First")
+    }
   };
 
   const removeFromWishlistHandler = async (id) => {
-    const { data } = await removeFromwishlist(id);
-    wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: data.wishlist });
+    try {
+      const { data } = await removeFromwishlist(id);
+      wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: data.wishlist }); 
+    } catch (error) {
+      toast.error("Something Went Wrong! Please Try Again")
+    }
   };
 
   const addToWishlistHandler = async (product) => {
-    const { data } = await addToWishlist(product);
-    wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: data.wishlist });
+    try {
+      const { data } = await addToWishlist(product);
+      wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: data.wishlist }); 
+    } catch (error) {
+      toast.error("Please Login First!!")
+    }
   };
 
   return (
