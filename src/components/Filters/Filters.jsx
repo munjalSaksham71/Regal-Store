@@ -39,6 +39,7 @@ const Filters = () => {
           <input
             type="radio"
             name="radio"
+            value="low_to_high"
             className="mr-1"
             checked={sortBy === "LOW_TO_HIGH"}
             onChange={() =>
@@ -51,6 +52,7 @@ const Filters = () => {
           <input
             type="radio"
             name="radio"
+            value="high_to_low"
             className="mr-1"
             checked={sortBy === "HIGH_TO_LOW"}
             onChange={() =>
@@ -67,7 +69,6 @@ const Filters = () => {
             value={byRange}
             min="1500"
             max="5200"
-            defaultValue="1500"
             onChange={(e) => setRangeval(e.target.value)}
           />
           <div className="filter_heading">

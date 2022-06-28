@@ -44,7 +44,7 @@ const ProductsScreen = () => {
 
     if (byRange) {
       filteredProducts = filteredProducts.filter(
-        (product) => product.price >= byRange
+        (product) => product.price <= byRange
       );
     }
 

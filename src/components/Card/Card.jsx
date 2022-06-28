@@ -85,7 +85,7 @@ const Card = ({ product }) => {
           Click here to know more
         </Link>
       </div>
-      <div class="card_badge btn btn-primary">
+      <div className="card_badge btn btn-primary">
         <AiFillStar /> {rating}/5
       </div>
     </div>

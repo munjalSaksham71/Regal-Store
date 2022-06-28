@@ -12,7 +12,7 @@ const FilterProvider  = ({children}) => {
         byFastDelivery: false, 
         byRating: 0,
         byCategory: [], 
-        byRange: 1500
+        byRange: 5200
     }
 
     const filterReducer = ( products, action ) => {
@@ -38,7 +38,7 @@ const FilterProvider  = ({children}) => {
                     byFastDelivery: false, 
                     byRating: 0,
                     byCategory: '',
-                    byRange: 1500
+                    byRange: 5200
                 } 
             default:
                 return {...products};
