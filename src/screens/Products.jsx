@@ -13,7 +13,7 @@ const ProductsScreen = () => {
       sortBy,
       byStock,
       byFastDelivery,
-      byRating,
+      byRating, 
       byCategory,
       byRange,
     },

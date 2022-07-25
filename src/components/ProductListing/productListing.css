@@ -7,3 +7,9 @@
     width: 75%;
     margin-left: 19rem;
 }
+
+@media screen and (min-width: 1830px) {
+    .products{ 
+     margin-left: 30rem;
+    }
+}
